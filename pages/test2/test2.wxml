@@ -1,0 +1,6 @@
+<!--pages/test2/test2.wxml-->
+<swiper style='height:100%;background:red;'>
+  <swiper-item>
+    aaa
+  </swiper-item>
+</swiper>

@@ -94,7 +94,8 @@
                     <input bindinput="KeyMobile" placeholder="请填写电话" style="width: 300rpx;text-align: right" value="{{mobile}}"></input>
                 </view>
             </view>
-            <view bindtap="{{shop_list.length>1?'showShop':''}}" class="flex-row border-bottom" style="background: #fff;padding: 24rpx">
+            <!-- <view bindtap="{{shop_list.length>1?'showShop':''}}" class="flex-row border-bottom" style="background: #fff;padding: 24rpx"> -->
+              <view bindtap="showShop" class="flex-row border-bottom" style="background: #fff;padding: 24rpx">
                 <view class="flex-grow-1">
                     <view class="flex-row" style="margin-bottom: 20rpx">
                         <view class="flex-grow-1">门店名称：{{shop.name}}</view>

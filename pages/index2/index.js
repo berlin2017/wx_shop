@@ -349,4 +349,9 @@ Page({
       };
       wx.setStorageSync("item", D);
     },
+  changeIndex:function(e){
+      this.setData({
+        currentTab:e.detail.current
+      });
+  },
 });
