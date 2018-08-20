@@ -1,5 +1,5 @@
 <include src="/commons/extension/extension"></include>
-<include src="/commons/navbar/navbar"></include>
+<!-- <include src="/commons/navbar/navbar"></include> -->
 <view class="after-navber">
     <view style="position:relative;">
         <view class="user-info flex-row flex-y-center" wx:if="{{style.top==0}}">

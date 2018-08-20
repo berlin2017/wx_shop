@@ -29,6 +29,19 @@
                     <input class="mobile-input" name="mobile" placeholder="请填写手机号码" type="number" value="{{form.mobile}}"></input>
                 </view>
             </view>
+
+              <view class="info-label info-content flex-row">
+                <view class="info-left flex-y-center required">位置</view>
+                <view class="info-right flex-row flex-y-center">
+
+                    <view class='location_text'>{{location.address}}</view>
+      
+                  <view style='width:60px;background:red;color:white;text-align:center;height20px;;line-height:20px;' bindtap='chooseLocation'>选择</view>
+               
+               
+                </view>
+            </view>
+
             <view class="info-label info-content flex-row">
                 <view bindtap="agree" class="info-agree flex-row flex-y-center">
                     <input hidden="true" name="agree" value="{{agree}}"></input>

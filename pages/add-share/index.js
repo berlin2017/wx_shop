@@ -7,7 +7,8 @@ Page({
             mobile: ""
         },
         img: "/images/img-share-un.png",
-        agree: 0
+        agree: 0,
+      location:"安徽省合肥市高新区拓基广场1206"
     },
     onLoad: function(e) {
         app.pageOnLoad(this);
@@ -93,5 +94,15 @@ Page({
             img: "/images/img-share-un.png",
             agree: a
         }));
-    }
+    },
+  chooseLocation:function(){
+    var that = this;
+    wx.chooseLocation({
+      success: function(res) {
+        that.setData({
+          location:res
+        });
+      },
+    })
+  },
 });

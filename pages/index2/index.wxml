@@ -1,52 +1,90 @@
-
-  <view class="swiper-tab" style='position:fixed;z-index:1000000;'>
-    <view wx:for="{{cat_list}}" wx:for-item="cat">
-      <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{cat.name}}</view>
-    </view>
+<view class="swiper-tab" style='position:fixed;z-index:1000000;'>
+  <view wx:for="{{cat_list}}" wx:for-item="cat">
+    <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{cat.name}}</view>
   </view>
+</view>
 
-  <view class='swip-content' style='display:none;'>
-    <block wx:for="{{cat_list}}" wx:for-item="cat" wx:for-index="itemIndex">
-      <view wx:if="{{currentTab==itemIndex}}">
-        <image src='{{cat.pic_url}}' mode='scaleToFill' style='width:100%;height:140px;'></image>
-        <view class='item_layout' wx:for="{{cat.goods_list}}" wx:for-item="goods" style='height:{{x*0.3+20}}px' bindtap='toDetail' data-id='{{goods.id}}'>
-          <image class='item_image' src='{{goods.pic_url}}' mode='scaleToFill' style='height:{{x*0.3}}px'></image>
-          <view class='item_content'>
-            <view class='goods_name'>{{goods.name}}</view>
-            <view class='goods_remake'></view>
-            <view class='goods_price'>￥{{goods.price}}</view>
+<swiper style='width:100%;height:100%;z-index:1000;padding-top:100rpx;' bindchange='changeIndex' current='{{currentTab}}'>
+  <block wx:for="{{cat_list}}" wx:for-item="cat" wx:for-index="itemIndex">
+    <swiper-item>
+      <image src='{{cat.pic_url}}' mode='scaleToFill' style='width:100%;height:140px;'></image>
+      <view class='item_layout' wx:for="{{cat.goods_list}}" wx:for-item="goods" style='height:{{x*0.3+20}}px' bindtap='toDetail' data-id='{{goods.id}}'>
+        <image class='item_image' src='{{goods.pic_url}}' mode='scaleToFill' style='height:{{x*0.3}}px'></image>
+        <view class='item_content'>
+          <view class='goods_name'>{{goods.name}}</view>
+          <view class='goods_remake'></view>
+          <view class='goods_price'>￥{{goods.price}}</view>
+        </view>
+        <view style='position:relative;float:right;bottom:10px;display:none;'>
+          <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-right:10px;' wx:if="{{goods.number&&goods.number>0}}" catchtap='cut' data-index='{{index}}' data-item_index='{{itemIndex}}'>-</view>
+          <view style='float:left;' wx:if="{{goods.number&&goods.number>0}}">{{goods.number}}</view>
+          <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-left:10px;' catchtap='add' data-index='{{index}}' data-item_index='{{itemIndex}}'>+</view>
+        </view>
+      </view>
+    </swiper-item>
+
+  </block>
+
+</swiper>
+
+<view class="attr-picker" wx:if="{{show_attr_picker}}">
+  <view class="content-box">
+    <view class="flex-row" style="border-bottom: 1rpx solid #e3e3e3;padding: 24rpx 28rpx">
+      <view class="flex-grow-0">
+        <view class="goods-pic-box">
+          <image mode="aspectFill" src="{{goods.attr_pic}}" wx:if="{{goods.attr_pic}}"></image>
+          <image mode="aspectFill" src="{{goods.pic_list[0].pic_url}}" wx:else></image>
+        </view>
+      </view>
+      <view class="flex-grow-1" style="padding: 0 24rpx">
+        <view style="margin-bottom: 12rpx;" wx:if="{{miaosha_data&&miaosha_data.rest_num>0}}">
+          <view>
+            <text style="color:#ff4544;font-weight: bold">￥{{miaosha_data.miaosha_price}}</text>
+            <text style="color:#888;text-decoration: line-through;font-size: 9pt;margin-left: 8rpx">￥{{goods.price}}</text>
           </view>
-          <view style='position:relative;float:right;bottom:10px;'>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-right:10px;' wx:if="{{goods.number&&goods.number>0}}" catchtap='cut' data-index='{{index}}' data-item_index='{{itemIndex}}'>-</view>
-            <view style='float:left;' wx:if="{{goods.number&&goods.number>0}}">{{goods.number}}</view>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-left:10px;' catchtap='add' data-index='{{index}}' data-item_index='{{itemIndex}}'>+</view>
+        </view>
+        <view style="color:#ff4544;margin-bottom: 12rpx;font-weight: bold" wx:else>￥{{goods.price}}</view>
+        <view style="font-size:9pt">
+          <block wx:if="{{miaosha_data&&miaosha_data.rest_num>0}}">库存{{miaosha_data.rest_num}}件
+          </block>
+          <block wx:else>库存{{goods.num}}件</block>
+        </view>
+      </view>
+      <view class="flex-grow-0">
+        <view bindtap="hideAttrPicker" class="flex-x-center flex-y-center" style="width: 100rpx;height: 100rpx">
+          <image src="/images/icon-close.png" style="width: 30rpx;height: 30rpx"></image>
+        </view>
+      </view>
+    </view>
+    <scroll-view scrollY="true" style="max-height: 650rpx;">
+      <view style="padding: 24rpx 28rpx">
+        <view>
+          <view class="attr-group" wx:if="{{attr_group.attr_list.length>0}}" wx:for="{{attr_group_list}}" wx:for-item="attr_group">
+            <view class="attr-group-name">{{attr_group.attr_group_name}}</view>
+            <view class="attr-list">
+              <text bindtap="attrClick" class="attr-item {{item.checked?'active':''}}" data-group-id="{{attr_group.attr_group_id}}" data-id="{{item.attr_id}}" wx:for="{{attr_group.attr_list}}">{{item.attr_name}}
+                                </text>
+            </view>
+          </view>
+        </view>
+        <view style="height: 0;border-bottom: 1rpx solid #e3e3e3;margin-bottom: 40rpx"></view>
+        <view style="padding-bottom: 40rpx">
+          <view class="flex-row flex-y-center mb-20">
+            <view class="flex-grow-1">数量</view>
+            <view class="flex-grow-0">
+              <view class="flex-row number-input-box">
+                <view bindtap="numberSub" class="flex-grow-0 flex-x-center flex-y-center number-btn number-sub {{form.number<=1?'disabled':''}}">-
+                </view>
+                <view class="flex-grow-0">
+                  <input bindblur="numberBlur" class="flex-grow-1 number-input" min="1" step="1" type="number" value="{{form.number}}"></input>
+                </view>
+                <view bindtap="numberAdd" class="flex-grow-0 flex-x-center flex-y-center number-btn number-add">+
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
-
-    </block>
-
+    </scroll-view>
   </view>
-
-  <swiper style='width:100%;height:100%;z-index:1000;padding-top:100rpx;'bindchange='changeIndex' current='{{currentTab}}'>
-   <block wx:for="{{cat_list}}" wx:for-item="cat" wx:for-index="itemIndex">
-      <swiper-item >
-        <image src='{{cat.pic_url}}' mode='scaleToFill' style='width:100%;height:140px;'></image>
-        <view class='item_layout' wx:for="{{cat.goods_list}}" wx:for-item="goods" style='height:{{x*0.3+20}}px' bindtap='toDetail' data-id='{{goods.id}}'>
-          <image class='item_image' src='{{goods.pic_url}}' mode='scaleToFill' style='height:{{x*0.3}}px'></image>
-          <view class='item_content'>
-            <view class='goods_name'>{{goods.name}}</view>
-            <view class='goods_remake'></view>
-            <view class='goods_price'>￥{{goods.price}}</view>
-          </view>
-          <view style='position:relative;float:right;bottom:10px;'>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-right:10px;' wx:if="{{goods.number&&goods.number>0}}" catchtap='cut' data-index='{{index}}' data-item_index='{{itemIndex}}'>-</view>
-            <view style='float:left;' wx:if="{{goods.number&&goods.number>0}}">{{goods.number}}</view>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-left:10px;' catchtap='add' data-index='{{index}}' data-item_index='{{itemIndex}}'>+</view>
-          </view>
-        </view>
-      </swiper-item >
-
-    </block>
-
-  </swiper>
+</view>
