@@ -290,7 +290,7 @@
                 <text style="color:#2495ff">手动定位</text>
             </view>
         </view>
-        <view class="shop-block flex-y-center">门店列表（仅展示您最近的30家门店）</view>
+        <view class="shop-block flex-y-center">门店列表（仅展示您最近的30家经销商）</view>
         <view bindtap="pickShop" class="flex-row address-picker" data-index="{{index}}" style="margin:0;" wx:for="{{shop_list}}">
             <view class="flex-grow-0 flex-y-center">
                 <image src="{{item.id==shop.id?'/images/icon-shop-checked.png':'/images/icon-shop-un.png'}}" style="width: 40rpx;height: 40rpx;margin-right: 20rpx"></image>

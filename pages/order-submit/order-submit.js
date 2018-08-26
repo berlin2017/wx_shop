@@ -186,7 +186,7 @@ Page({
     getOrderData: function(t) {
         var s = this, a = {}, e = "";
         if (s.data.address && s.data.address.id && (e = s.data.address.id), a.address_id = e, 
-        a.longitude = longitude, a.latitude = latitude, wx.showLoading({
+          a.lng = latitude, a.lat = longitude , wx.showLoading({
             title: "正在加载",
             mask: !0
         }), t.cart_list) {
