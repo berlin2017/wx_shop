@@ -24,8 +24,9 @@ Page({
             },
             success: function(t) {
                 a.setData({
-                    list: t.data
+                    list: t
                 });
+
             },
             complete: function() {
                 wx.hideLoading();
@@ -64,5 +65,29 @@ Page({
                 is_loading = !1;
             }
         }));
+    },
+  search:function(e){
+    var a = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    var value = e.detail.value;
+    var params = {};
+    params.mobile = value;
+    if(a.data.status != -1){
+      params.state = a.data.status;
     }
+    app.request({
+      url: api.share.find_order,
+      data: params,
+      success: function (t) {
+        a.setData({
+          list: t.data
+        });
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    });
+  },
 });

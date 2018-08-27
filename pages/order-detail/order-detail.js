@@ -43,8 +43,8 @@ Page({
     location: function() {
         var t = this.data.order.shop;
         wx.openLocation({
-            latitude: parseFloat(t.latitude),
-            longitude: parseFloat(t.longitude),
+          latitude: parseFloat(t.longitude),
+          longitude: parseFloat(t.latitude),
             address: t.address,
             name: t.name
         });

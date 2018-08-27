@@ -128,4 +128,9 @@ Page({
       },
     })
   },
+  toIndex:function(){
+    wx.switchTab({
+      url: '../index2/index',
+    })
+  },
 });

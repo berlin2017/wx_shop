@@ -92,7 +92,7 @@
         </view>
         <view class="info-content">谢谢您的支持，请等待审核！</view>
         <view class="flex-row info-btn1">
-            <navigator class="flex-y-content btn" openType="redirect" url="/pages/index/index">去商城逛逛</navigator>
+            <navigator class="flex-y-content btn" bindtap='toIndex'>去商城逛逛</navigator>
         </view>
     </view>
 </view>
