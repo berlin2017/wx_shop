@@ -4,7 +4,9 @@ Page({
     data: {
         status: -1,
         list: [],
-        hidden: -1
+        hidden: -1,
+        searchIndex:1,
+      inputValue:'',
     },
     onLoad: function(t) {
         app.pageOnLoad(this);
@@ -46,6 +48,7 @@ Page({
     },
     onReachBottom: function() {
         var s = this;
+        s.data.searchIndex ++;
         is_loading || is_no_more || (is_loading = !0, app.request({
             url: api.share.get_order,
             data: {
@@ -66,14 +69,23 @@ Page({
             }
         }));
     },
+
+  bindInput:function(e){
+    this.setData({
+      inputValue : e.detail.value
+    })
+  },
+
   search:function(e){
     var a = this;
     wx.showLoading({
       title: '加载中...',
     })
-    var value = e.detail.value;
+    var  value = a.data.inputValue;
+  
     var params = {};
     params.mobile = value;
+    params.page = a.data.searchIndex;
     if(a.data.status != -1){
       params.state = a.data.status;
     }
@@ -82,12 +94,36 @@ Page({
       data: params,
       success: function (t) {
         a.setData({
-          list: t.data
+          list: []
         });
       },
       complete: function () {
         wx.hideLoading();
       }
     });
+  },
+
+  confirmOrder:function(e){
+      var index = e.currentTarget.dataset.index;
+    var a = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    app.request({
+      url: api.share.up_order,
+      data: {
+        order_id: a.data.list[index].order_id
+      },
+      success: function (t) {
+        wx.showToast({
+          title: '核销成功',
+        })
+      },
+      complete: function () {
+        wx.hideLoading();
+        a.GetList();
+      }
+    });
+  
   },
 });

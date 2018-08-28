@@ -1,20 +1,86 @@
 <view class="info">
-    <view class="info-title flex-row">
-        <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=-1">
-            <view class="info-text {{status==-1?'active':''}}">全部</view>
-        </navigator>
-        <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=0">
-            <view class="info-text {{status==0?'active':''}}">待付款</view>
-        </navigator>
-        <navigator class="flex-x-center width " openType="redirect" url="/pages/share-order/share-order?status=1">
-            <view class="info-text {{status==1?'active':''}}">已付款</view>
-        </navigator>
-        <navigator class="flex-x-center width" openType="redirect" url="/pages/share-order/share-order?status=2">
-            <view class="info-text {{status==2?'active':''}}">已完成</view>
-        </navigator>
-    </view>
+  <view class="info-title flex-row">
+    <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=-1">
+      <view class="info-text {{status==-1?'active':''}}">全部</view>
+    </navigator>
+    <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=0">
+      <view class="info-text {{status==0?'active':''}}">待付款</view>
+    </navigator>
+    <navigator class="flex-x-center width " openType="redirect" url="/pages/share-order/share-order?status=1">
+      <view class="info-text {{status==1?'active':''}}">已付款</view>
+    </navigator>
+    <navigator class="flex-x-center width" openType="redirect" url="/pages/share-order/share-order?status=2">
+      <view class="info-text {{status==2?'active':''}}">已完成</view>
+    </navigator>
+  </view>
 
-    <view class="info-content">
+  <view class="order-list">
+  <view style='width:96%;margin-left:auto;margin-right:auto;height:40px;margin-top:120rpx;margin-bottom:10px;'>
+    <input placeholder='输入号码' bindconfirm='search' confirm-type='search' type='number' style='margin-left:auto;margin-right:auto;height:40px;border-radius:20px;background:white;padding-left:20px;padding-right:20px;float:left;width:80%;' bindinput='bindInput'></input>
+    <view style='float:right;line-height:40px;width:10%;margin-left:5%;margin-right:5%;' bindtap='search'>搜索</view>
+  </view>
+  
+    <view class="order-item" wx:for="{{list}}" wx:for-item="order">
+      <!-- <navigator url="{{status==4?'/pages/order-refund-detail/order-refund-detail?id='+order.order_refund_id:'/pages/order-detail/order-detail?id='+order.order_id}}"> -->
+        <view style="font-size: 9pt;margin-bottom: 12rpx;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{order.mch.name}}</view>
+        <view class="flex-row order-info">
+          <view class="flex-grow-1">订单号:{{order.order_no}}</view>
+          <view class="flex-grow-0">{{order.addtime}}</view>
+        </view>
+        <view class="goods-list">
+          <view class="goods-item flex-row" wx:for="{{order.goods_list}}" wx:for-item="goods">
+            <view class="flex-grow-0" style="overflow: visible">
+              <image class="goods-pic" mode="aspectFill" src="{{goods.goods_pic}}"></image>
+            </view>
+            <view class="flex-grow-1 flex-col">
+              <view class="flex-grow-1">
+                <view class="goods-name">{{goods.goods_name}}</view>
+                <view class="attr-list">
+                  <view class="attr-item" wx:for="{{goods.attr_list}}" wx:for-item="attr">
+                    {{attr.attr_group_name}}:{{attr.attr_name}}
+                  </view>
+                </view>
+              </view>
+
+              <view class="flex-grow-0 flex-row">
+                <view class="flex-grow-1 num">×{{goods.num}}</view>
+                <view class="flex-grow-0 price">￥:{{goods.price}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      <!-- </navigator> -->
+
+       <view class="flex-row">
+          <text >姓名：{{order.name}}</text>
+          <text style="margin-left:10px;">手机号：{{order.mobile}}</text>
+       </view>  
+      
+      <view class="flex-row">
+        <view class="flex-grow-1 flex-y-center">
+          <block wx:if="{{status==4}}">
+            <block wx:if="{{order.refund_type==1}}">
+              退货退款：
+              <text style="color: #ff4544">￥{{order.refund_price}}</text>
+            </block>
+            <block wx:if="{{order.refund_type==2}}">
+              换货
+            </block>
+          </block>
+          <block wx:else>合计：￥{{order.pay_price}}</block>
+        </view>
+        <view class="flex-grow-0 flex-y-center flex-row">
+          <button bindtap='confirmOrder' data-index='{{index}}' wx:if='{{order.fenxiao_confirm==0&&order.is_pay!=0}}'>确认核销</button>
+
+          <text wx:if='{{order.fenxiao_confirm==1}}' style='color:red;'>已核销</text>
+          <text wx:if='{{order.is_pay==0}}' style='color:red;'>未付款</text>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="info-content">
       <input placeholder='搜索' bindconfirm='search' confirm-type='search' type='number' style='width:96%;margin-left:auto;margin-right:auto;height:40px;border-radius:20px;background:white;padding-left:20px;padding-right:20px;margin-top:10px;margin-bottom:10px;'></input>
         <view class="info-block" wx:for="{{list}}">
             <view class="info-label flex-row">
@@ -55,14 +121,14 @@
                 </view>
             </view>
         </view>
+    </view> -->
+  <view class="info-footer flex-row">
+    <view class="info-before">
+      <view class="info-border"></view>
     </view>
-    <view class="info-footer flex-row">
-        <view class="info-before">
-            <view class="info-border"></view>
-        </view>
-        <view class="info-t">没有更多了</view>
-        <view class="info-after">
-            <view class="info-border"></view>
-        </view>
+    <view class="info-t">没有更多了</view>
+    <view class="info-after">
+      <view class="info-border"></view>
     </view>
+  </view>
 </view>

@@ -93,7 +93,8 @@ var _api_root = "{$_api_root}", api = {
         bind_parent: _api_root + "share/bind-parent",
         get_team: _api_root + "share/get-team",
         get_order: _api_root + "share/get-order",
-        find_order:_api_root + "share/find-order"
+        find_order:_api_root + "share/find-order",
+        up_order:_api_root + "share/up-order"
     },
     coupon: {
         index: _api_root + "coupon/index",
