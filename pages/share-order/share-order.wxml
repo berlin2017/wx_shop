@@ -3,14 +3,14 @@
     <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=-1">
       <view class="info-text {{status==-1?'active':''}}">全部</view>
     </navigator>
-    <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=0">
+    <navigator class="flex-x-center  width " openType="redirect" url="/pages/share-order/share-order?status=0" style='display:none;'>
       <view class="info-text {{status==0?'active':''}}">待付款</view>
     </navigator>
     <navigator class="flex-x-center width " openType="redirect" url="/pages/share-order/share-order?status=1">
-      <view class="info-text {{status==1?'active':''}}">已付款</view>
+      <view class="info-text {{status==1?'active':''}}">未核销</view>
     </navigator>
     <navigator class="flex-x-center width" openType="redirect" url="/pages/share-order/share-order?status=2">
-      <view class="info-text {{status==2?'active':''}}">已完成</view>
+      <view class="info-text {{status==2?'active':''}}">已核销</view>
     </navigator>
   </view>
 

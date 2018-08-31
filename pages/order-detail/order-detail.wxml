@@ -35,7 +35,7 @@
             <view class="flex-grow-1">联系电话：{{order.shop.mobile}}</view>
             <view class="flex-grow-1">门店地址：{{order.shop.address}}</view>
         </view>
-        <view class="flex-grow-0 flex-y-center" wx:if="{{order.shop.longitude}}">
+        <view class="flex-grow-0 flex-y-center" wx:if="{{order.shop.lng}}">
             <text bindtap="location" class="copy-text-btn">导航</text>
         </view>
     </view>
