@@ -110,7 +110,7 @@ Page({
         }));
     },
     goHome: function(t) {
-        wx.redirectTo({
+      wx.switchTab({
             url: "/pages/pt/index/index"
         });
     },

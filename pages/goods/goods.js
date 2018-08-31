@@ -98,7 +98,7 @@ Page({
                     content: t.msg,
                     showCancel: !1,
                     success: function(t) {
-                        t.confirm && wx.switchTab({
+                      t.confirm && wx.switchTab({
                             url: "/pages/index/index"
                         });
                     }

@@ -64,7 +64,7 @@
                 <view class="list-red">{{total_cash}}</view>元</view>
         </navigator>
     </view>
-    <view class="list flex-row">
+    <view class="list flex-row" style='display:none;'>
         <navigator class="item border-bottom" url="/pages/share-team/share-team">
             <view class="list-img flex-x-center">
                 <image class="img" src="{{custom.menus.team.icon}}"></image>

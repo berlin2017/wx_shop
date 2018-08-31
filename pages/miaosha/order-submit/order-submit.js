@@ -203,7 +203,7 @@ Page({
                     showCancel: !1,
                     confirmText: "返回",
                     success: function(t) {
-                        t.confirm && (1 == getCurrentPages().length ? wx.redirectTo({
+                      t.confirm && (1 == getCurrentPages().length ? wx.switchTab({
                             url: "/pages/index/index"
                         }) : wx.navigateBack({
                             delta: 1

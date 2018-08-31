@@ -1,4 +1,4 @@
-<navigator class="return-index-btn" openType="redirect" url="/pages/index/index" wx:if="{{show_index}}">
+<navigator class="return-index-btn" openType="switchTab" url="/pages/index/index" wx:if="{{show_index}}">
     <image src="/images/nav-icon-index.png" style="width: 50rpx;height: 50rpx"></image>
 </navigator>
 <view class="flex-row tab-bar">
@@ -91,8 +91,8 @@
                         <button bindtap="orderPay" class="order-option-btn" data-index="{{index}}">付款</button>
                     </view>
                     <view class="flex-grow-1" wx:if="{{order.is_pay==1&&order.is_offline==1&&order.is_send==0&&order.apply_delete==0}}">
-                        <view bindtap="orderQrcode" class="order-option-btn clerk flex-y-center" data-index="{{index}}">
-                            <image data-index="{{index}}" src="/images/icon-clerk.png" style="width:26rpx;height:26rpx;margin-right:10rpx"></image> 核销码
+                        <view bindtap="orderQrcode" class="order-option-btn clerk flex-y-center" data-index="{{index}}" style='display:none;'>
+                            <image data-index="{{index}}" src="/images/icon-clerk.png" style="width:26rpx;height:26rpx;margin-right:10rpx;"></image> 核销码
                         </view>
                     </view>
                     <view class="flex-grow-1 flex-row" wx:if="{{order.is_send==1&&order.is_confirm==0}}">

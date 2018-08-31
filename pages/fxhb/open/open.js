@@ -23,7 +23,7 @@ Page({
                     content: o.msg,
                     showCancel: !1,
                     success: function(o) {
-                        o.confirm && wx.redirectTo({
+                      o.confirm && wx.switchTab({
                             url: "/pages/index/index"
                         });
                     }

@@ -25,7 +25,7 @@ Page({
                             content: e.msg,
                             showCancel: !1,
                             success: function(e) {
-                                e.confirm && wx.redirectTo({
+                                e.confirm && wx.switchTab({
                                     url: "/pages/index/index"
                                 });
                             }
@@ -34,7 +34,7 @@ Page({
                     complete: function() {
                         wx.hideLoading();
                     }
-                })) : e.cancel && wx.redirectTo({
+                  })) : e.cancel && wx.switchTab({
                     url: "/pages/index/index"
                 });
             }

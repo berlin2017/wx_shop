@@ -31,10 +31,11 @@ Page({
       method: "POST",
       success: function(e) {
         0 == e.code && (t.is_distributor = e.data, wx.setStorageSync("user_info", t), 1 == e.data && wx.redirectTo({
-          url: "/pages/share/index"
-        })), a.setData({
-          user_info: t
-        });
+            url: "/pages/share/index"
+          })),
+          a.setData({
+            user_info: t
+          });
       },
       complete: function() {
         wx.hideLoading();
@@ -43,22 +44,22 @@ Page({
   },
   onHide: function() {},
   onUnload: function() {},
-  formSubmit: function(e) {
+  formSubmit: function(e) { 
     var a = this,
       t = wx.getStorageSync("user_info");
-    if (a.data.location == null || a.data.location==""){
-          wx.showToast({
-            title: "请选择地址！",
-            image: "/images/icon-warning.png"
-          })
-          return;
-      }
+    if (a.data.location == null || a.data.location == "") {
+      wx.showToast({
+        title: "请选择地址！",
+        image: "/images/icon-warning.png"
+      })
+      return;
+    }
     if (a.data.form = e.detail.value, null != a.data.form.name && "" != a.data.form.name)
       if (null != a.data.form.mobile && "" != a.data.form.mobile) {
         var o = e.detail.value;
         o.lat = a.data.location.longitude;
         o.lng = a.data.location.latitude;
-        o.address = a.data.location.address;
+        // o.address = a.data.location.address;
         o.form_id = e.detail.formId, 0 != a.data.agree ? (console.log(a.data.agree), wx.showLoading({
           title: "正在提交",
           mask: !0
@@ -73,7 +74,8 @@ Page({
               title: e.msg,
               image: "/images/icon-warning.png"
             });
-          },fail:function(e){
+          },
+          fail: function(e) {
             wx.showToast({
               title: '请求失败,请重试',
               image: "/images/icon-warning.png"
@@ -128,9 +130,9 @@ Page({
       },
     })
   },
-  toIndex:function(){
+  toIndex: function() {
     wx.switchTab({
-      url: '../index2/index',
+      url: '../index/index',
     })
   },
 });

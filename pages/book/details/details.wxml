@@ -162,7 +162,7 @@
                     <view>分享给朋友</view>
                 </button>
             </view>
-            <view class="flex-grow-1 flex-x-center">
+            <view class="flex-grow-1 flex-x-center" style='display:none;'>
                 <view bindtap="getGoodsQrcode" class="share-bottom">
                     <image src="/images/icon-share-qrcode.png"></image>
                     <view>生成商品海报</view>

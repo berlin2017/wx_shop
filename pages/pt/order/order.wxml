@@ -84,7 +84,7 @@
             <view bindtap="goToCancel" class=" frame-btn flex-gorw-0 flex-y-center" data-id="{{item.order_id}}" wx:if="{{item.apply_delete==0&&item.is_cancel==0&&item.status==0&&item.status!=4&&item.is_send==0}}">
                         取消
                     </view>
-            <view bindtap="getOfflineQrcode" class=" red-btn flex-gorw-0 flex-y-center" data-id="{{item.order_no}}" wx:if="{{item.offline==2&&item.is_confirm==0&&item.status==3&&item.apply_delete==0}}">
+            <view bindtap="getOfflineQrcode" class=" red-btn flex-gorw-0 flex-y-center" data-id="{{item.order_no}}" wx:if="{{item.offline==2&&item.is_confirm==0&&item.status==3&&item.apply_delete==0}}" style='display:none;'>
                         核销码
                     </view>
             <view bindtap="orderPay" class=" red-btn flex-gorw-0 flex-y-center" data-id="{{item.order_id}}" data-index="{{index}}" wx:if="{{item.status==1&&item.is_cancel==0}}">

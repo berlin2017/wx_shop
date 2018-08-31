@@ -288,8 +288,6 @@ Page({
         cat_list: this.data.cat_list
       });
 
-     this.addCard(e);
-
     },
 
     toDetail:function(e){
@@ -351,34 +349,4 @@ Page({
       };
       wx.setStorageSync("item", D);
     },
-  changeIndex:function(e){
-      this.setData({
-        currentTab:e.detail.current
-      });
-  },
-
- addCard:function(e){
-   var that = this;
-   var index = e.currentTarget.dataset.index;
-   var item_index = e.currentTarget.dataset.item_index;
-   wx.showLoading({
-     title: "正在提交",
-     mask: !0
-   }), app.request({
-     url: api.cart.add_cart,
-     method: "POST",
-     data: {
-       goods_id: that.data.cat_list[item_index].goods_list[index].id,
-       attr: JSON.stringify([]),
-       num: 1
-     },
-     success: function (t) {
-       wx.showToast({
-         title: t.msg,
-         duration: 1500
-       }), wx.hideLoading()
-
-     }
-   })
- },
 });

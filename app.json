@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index2/index",
     "pages/index/index",
+    "pages/add-share/index",
     "pages/cart/cart",
     "pages/goods/goods",
     "pages/list/list",
@@ -16,7 +16,6 @@
     "pages/favorite/favorite",
     "pages/order-refund/order-refund",
     "pages/order-refund-detail/order-refund-detail",
-    "pages/add-share/index",
     "pages/share/index",
     "pages/cash/cash",
     "pages/share-money/share-money",
@@ -109,7 +108,7 @@
    "tabBar": {
      "list": [
         {
-          "pagePath": "pages/index2/index",
+          "pagePath": "pages/index/index",
           "text": "商城",
           "iconPath": "images/nav-icon-index.png",
           "selectedIconPath": "images/nav-icon-index.active.png"

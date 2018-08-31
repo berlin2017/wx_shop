@@ -86,7 +86,7 @@ Page((_defineProperty(_Page = {
                     content: t.msg,
                     showCancel: !1,
                     success: function(t) {
-                        t.confirm && wx.redirectTo({
+                      t.confirm && wx.switchTab({
                             url: "/pages/pt/index/index"
                         });
                     }
@@ -125,7 +125,7 @@ Page((_defineProperty(_Page = {
         return (t = 0 < t ? t : 0) < 10 && (t = "0" + t), t;
     },
     goToHome: function() {
-        wx.redirectTo({
+      wx.switchTab({
             url: "/pages/pt/index/index"
         });
     },

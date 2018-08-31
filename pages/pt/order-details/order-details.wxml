@@ -123,7 +123,7 @@
     <view bindtap="toConfirm" class="play-btn" wx:if="{{order_info.apply_delete==0&&order_info.status==3&&order_info.is_send==1&&order_info.is_confirm==0}}">
             确认收货
     </view>
-    <view bindtap="getOfflineQrcode" class=" play-btn flex-gorw-0 flex-y-center" data-id="{{order_info.order_no}}" wx:if="{{order_info.offline==2&&order_info.is_confirm==0&&order_info.status==3&&order_info.apply_delete==0}}">
+    <view bindtap="getOfflineQrcode" class=" play-btn flex-gorw-0 flex-y-center" data-id="{{order_info.order_no}}" wx:if="{{order_info.offline==2&&order_info.is_confirm==0&&order_info.status==3&&order_info.apply_delete==0}}" style='display:none;'>
         核销码
     </view>
     <navigator class="play-btn" url="/pages/pt/order-refund/order-refund?id={{order_info.order_id}}" wx:if="{{order_info.apply_delete==0&&order_info.status==3&&order_info.goods_list[0].order_refund_enable==1}}">

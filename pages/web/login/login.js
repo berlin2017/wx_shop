@@ -25,7 +25,7 @@ Page({
             content: "无效的Token，请刷新页面后重新扫码登录",
             showCancel: !1,
             success: function(n) {
-                n.confirm && wx.redirectTo({
+              n.confirm && wx.switchTab({
                     url: "/pages/index/index"
                 });
             }
@@ -41,7 +41,7 @@ Page({
                     content: n.msg,
                     showCancel: !1,
                     success: function(n) {
-                        n.confirm && wx.redirectTo({
+                      n.confirm && wx.switchTab({
                             url: "/pages/index/index"
                         });
                     }

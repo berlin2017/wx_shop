@@ -14,6 +14,15 @@ Page({
         this.setData({
             store: t
         });
+      
+      // this.switchNav({
+      //   currentTarget:{
+      //     dataset:{
+      //         id:1
+      //     }
+      //   }
+      // });
+
     },
     onReady: function() {},
     onShow: function() {

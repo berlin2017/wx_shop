@@ -88,7 +88,7 @@ Page({
                             content: o.msg,
                             confirmText: "确认",
                             success: function(o) {
-                                o.confirm && wx.redirectTo({
+                              o.confirm && wx.switchTab({
                                     url: "/pages/index/index"
                                 });
                             }

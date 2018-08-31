@@ -86,7 +86,10 @@ Page({
       title: '加载中...',
     })
     var value = a.data.inputValue;
-
+    if(value==null||value==''){
+      this.GetList();
+      return
+    }
     var params = {};
     params.mobile = value;
     params.page = a.data.searchIndex;
@@ -98,7 +101,7 @@ Page({
       data: params,
       success: function(t) {
         a.setData({
-          list: []
+          list: t
         });
       },
       complete: function() {
@@ -115,7 +118,7 @@ Page({
       success: function(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          that.upOrder();
+          that.upOrder(e);
         } else if (res.cancel) {
           console.log('用户点击取消')
 
@@ -125,7 +128,7 @@ Page({
 
   },
 
-  upOrder: function() {
+  upOrder: function(e) {
     var index = e.currentTarget.dataset.index;
     var a = this;
     wx.showLoading({
