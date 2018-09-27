@@ -1,0 +1,29 @@
+<!--components/refresh.wxml-->
+<scroll-view class='loading-container' scroll-y style='height:100%;' bindscroll='bindscroll' bindscrolltoupper='bindscrolltoupper' bindscrolltolower='bindscrolltolower' class='scroll-wrap'>
+
+ 
+
+<view style='transform:translateY({{scrollHeight - height}}px);height:100%;' bindtouchstart='start' bindtouchmove='move' bindtouchend='end'>
+
+ 
+
+<view class="pull" >
+
+<view class="pull-refresh"></view>
+
+</view>
+
+ 
+
+<view class="content">
+
+<slot name="content"></slot>
+
+</view>
+
+</view>
+
+ 
+
+</scroll-view>
+

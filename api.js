@@ -23,7 +23,7 @@ var _api_root = "{$_api_root}", api = {
         shop_detail: _api_root + "default/shop-detail",
         topic_type: _api_root + "default/topic-type",
         buy_data: _api_root + "default/buy-data",
-        goods_recommend: _api_root + "default/goods-recommend"
+        goods_recommend: _api_root + "default/goods-recommend",
     },
     cart: {
         list: _api_root + "cart/list",

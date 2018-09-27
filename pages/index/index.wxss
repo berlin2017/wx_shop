@@ -696,10 +696,10 @@
   display: inline-block;
   width: 20%;
   color: #777;
-  float: left;
   border-radius: 4px;
-  height:100rpx;
-  line-height:100rpx;
+  text-align: center;
+  height:90rpx;
+  line-height:90rpx;
 
 }
 

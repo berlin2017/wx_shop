@@ -1,4 +1,7 @@
 {
     "navigationBarTitleText": "商城首页",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+      "refresh": "../../components/refresh"
+    }
 }
