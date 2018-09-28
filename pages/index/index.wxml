@@ -1,32 +1,49 @@
 <scroll-view style='width:100%;white-space:nowrap;height:100rpx;background:white;' scroll-x scroll-into-view="{{toView}}">
 
-  <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" id="view{{index}}" data-current="{{index}}" bindtap="swichNav"  wx:for="{{cat_list}}" wx:for-item="cat">{{cat.name}}</view>
+  <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" id="view{{index}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{cat_list}}" wx:for-item="cat">{{cat.name}}</view>
 
 </scroll-view>
 
 <swiper style='width:100%;height:calc(100vh - 100rpx);' bindchange='changeIndex' current='{{currentTab}}'>
   <block wx:for="{{cat_list}}" wx:for-item="cat" wx:for-index="itemIndex">
     <swiper-item>
-    <refresh id='loadmore' bindonRefresh='onRefresh'>
-    <view slot='content'>
-      <!-- <scroll-view style='height:100%;' scroll-y> -->
-        <image src='{{cat.pic_url}}' mode='scaleToFill' style='width:100%;height:140px;'></image>
-        <view class='item_layout' wx:for="{{list[itemIndex]}}" wx:for-item="goods" style='height:{{x*0.3+20}}px' bindtap='toDetail' data-id='{{goods.id}}'>
-          <image class='item_image' src='{{goods.pic_url}}' mode='scaleToFill' style='height:{{x*0.3}}px'></image>
-          <view class='item_content'>
-            <view class='goods_name'>{{goods.name}}</view>
-            <view class='goods_remake'></view>
-            <view class='goods_price'>￥{{goods.price}}</view>
+
+      <scroll-view class='loading-container' scroll-y style='height:100%;' bindscroll='bindscroll' bindscrolltoupper='bindscrolltoupper' bindscrolltolower='bindscrolltolower' class='scroll-wrap'>
+
+
+
+        <view style='transform:translateY({{scrollHeight - height}}px);height:100%;' bindtouchstart='start' bindtouchmove='move' bindtouchend='end'>
+
+          <view class="pull">
+
+            <view class="pull-refresh"></view>
+
           </view>
-          <view style='position:relative;float:right;bottom:10px;'>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-right:10px;' wx:if="{{goods.number&&goods.number>0}}" catchtap='cut' data-index='{{index}}' data-item_index='{{itemIndex}}'>-</view>
-            <view style='float:left;' wx:if="{{goods.number&&goods.number>0}}">{{goods.number}}</view>
-            <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-left:10px;' catchtap='add' data-index='{{index}}' data-item_index='{{itemIndex}}'>+</view>
+
+          <view slot='content'>
+            <!-- <scroll-view style='height:100%;' scroll-y> -->
+            <image src='{{cat.pic_url}}' mode='scaleToFill' style='width:100%;height:140px;'></image>
+            <view class='item_layout' wx:for="{{list[itemIndex]}}" wx:for-item="goods" style='height:{{x*0.3+20}}px' bindtap='toDetail' data-id='{{goods.id}}'>
+              <image class='item_image' src='{{goods.pic_url}}' mode='scaleToFill' style='height:{{x*0.3}}px'></image>
+              <view class='item_content'>
+                <view class='goods_name'>{{goods.name}}</view>
+                <view class='goods_remake'></view>
+                <view class='goods_price'>￥{{goods.price}}</view>
+              </view>
+              <view style='position:relative;float:right;bottom:10px;'>
+                <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-right:10px;' wx:if="{{goods.number&&goods.number>0}}" catchtap='cut' data-index='{{index}}' data-item_index='{{itemIndex}}'>-</view>
+                <view style='float:left;' wx:if="{{goods.number&&goods.number>0}}">{{goods.number}}</view>
+                <view style='background:black;height:20px;width:20px;border-radius:10px;color:white;text-align:center;float:left;margin-left:10px;' catchtap='add' data-index='{{index}}' data-item_index='{{itemIndex}}'>+</view>
+              </view>
+            </view>
+            <!-- </scroll-view> -->
           </view>
+
+
         </view>
-      <!-- </scroll-view> -->
-      </view>
-      </refresh>
+
+      </scroll-view>
+
     </swiper-item>
 
   </block>
