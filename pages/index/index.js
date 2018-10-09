@@ -681,7 +681,7 @@ requestList: function() {
 onRefresh: function() {
 
   this.data.cat_list[this.data.currentTab].page = 1
-  this.data.cat_list[this.data.currentTab] = [];
+  this.data.list[this.data.currentTab] = [];
   this.requestList();
 
 },
