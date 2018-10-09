@@ -499,8 +499,8 @@ bindchange: function(e) {
 
 cut: function(e) {
   console.log(e);
-  var item_index = e.currentTarget.dataset.item_index;
-  var index = e.currentTarget.dataset.index;
+  var item_index = e.currentTarget.dataset.index;
+  var index = e.currentTarget.dataset.item_index;
   if (!this.data.list[index][item_index].number) {
     this.data.list[index][item_index].number = 0;
   }
@@ -523,8 +523,8 @@ cut: function(e) {
 },
 add: function(e) {
   console.log(e);
-  var item_index = e.currentTarget.dataset.item_index;
-  var index = e.currentTarget.dataset.index;
+  var item_index = e.currentTarget.dataset.index;
+  var index = e.currentTarget.dataset.item_index;
   if (!this.data.list[index][item_index].number) {
     this.data.list[index][item_index].number = 0;
   }
@@ -616,8 +616,8 @@ changeIndex: function(e) {
 
 addCard: function(e) {
   var that = this;
-  var index = e.currentTarget.dataset.index;
-  var item_index = e.currentTarget.dataset.item_index;
+  var index = e.currentTarget.dataset.item_index;
+  var item_index = e.currentTarget.dataset.index;
   wx.showLoading({
     title: "正在提交",
     mask: !0
@@ -630,7 +630,7 @@ addCard: function(e) {
       num: 1
     },
     success: function(t) {
-      that.data.list[index][e.currentTarget.dataset.item_index].number += 1;
+      that.data.list[index][item_index].number += 1;
       that.setData({
         list: that.data.list
       });
