@@ -499,29 +499,39 @@ bindchange: function(e) {
 
 cut: function(e) {
   console.log(e);
-  if (!this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number) {
-    this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number = 0;
+  var item_index = e.currentTarget.dataset.item_index;
+  var index = e.currentTarget.dataset.index;
+  if (!this.data.list[index][item_index].number) {
+    this.data.list[index][item_index].number = 0;
   }
-  if (this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number <= 0) {
+  if (this.data.list[index][item_index].number <= 0) {
     return;
   }
-  this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number -= 1;
+  this.data.list[index][item_index].number -= 1;
   this.setData({
-    cat_list: this.data.cat_list
+    list: this.data.list
   });
+
+  
+  // if (!this.data.list[index][item_index].number) {
+  //   this.data.list[index][item_index].number = 0;
+  // }
+  // if (this.data.list[index][item_index].number < 0) {
+  //   return;
+  // }
+
 },
 add: function(e) {
   console.log(e);
-  if (!this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number) {
-    this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number = 0;
+  var item_index = e.currentTarget.dataset.item_index;
+  var index = e.currentTarget.dataset.index;
+  if (!this.data.list[index][item_index].number) {
+    this.data.list[index][item_index].number = 0;
   }
-  if (this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number < 0) {
+  if (this.data.list[index][item_index].number < 0) {
     return;
   }
-  this.data.cat_list[e.currentTarget.dataset.item_index].goods_list[e.currentTarget.dataset.index].number += 1;
-  this.setData({
-    cat_list: this.data.cat_list
-  });
+ 
 
   this.addCard(e);
 
@@ -615,11 +625,15 @@ addCard: function(e) {
     url: api.cart.add_cart,
     method: "POST",
     data: {
-      goods_id: that.data.cat_list[item_index].goods_list[index].id,
+      goods_id: that.data.list[index][item_index].id,
       attr: JSON.stringify([]),
       num: 1
     },
     success: function(t) {
+      that.data.list[index][e.currentTarget.dataset.item_index].number += 1;
+      that.setData({
+        list: that.data.list
+      });
       wx.showToast({
         title: t.msg,
         duration: 1500

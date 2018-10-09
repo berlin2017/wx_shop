@@ -136,7 +136,7 @@ Page({
       //   showCancel: !1
       // });
     // }
-    if(!a.data.shop){
+    if (!a.data.shop || !a.data.shop.id){
       wx.showModal({
         title: "警告",
         content: "请选择门店",
