@@ -14,8 +14,12 @@
             <view bindtap="cartDone" class="flex-y-center flex-grow-0 flex-x-center edit-btn">完成</view>
             <view bindtap="cartDelete" class="flex-y-center flex-grow-0 flex-x-center submit-btn">删除</view>
         </block>
-        <block wx:else>
+        <!-- <block wx:else>
             <view bindtap="cartEdit" class="flex-y-center flex-grow-0 flex-x-center edit-btn">编辑</view>
+            <view bindtap="cartSubmit" class="flex-y-center flex-grow-0 flex-x-center submit-btn">结算</view>
+        </block> -->
+          <block wx:else>
+            <view bindtap="cartDelete" class="flex-y-center flex-grow-0 flex-x-center edit-btn">删除</view>
             <view bindtap="cartSubmit" class="flex-y-center flex-grow-0 flex-x-center submit-btn">结算</view>
         </block>
     </view>
