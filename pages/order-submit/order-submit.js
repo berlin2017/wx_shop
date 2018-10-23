@@ -20,6 +20,18 @@ Page({
     payment: -1,
     show_payment: !1
   },
+
+  // onHide: function () {//如果页面被卸载时被执行
+  //   if (this.data.show_shop){
+  //    this.setData({
+  //      show_shop:false
+  //    })
+  //     this.onLoad()
+  //   }else{
+     
+  //   }
+  // },
+
   onLoad: function(t) {
     app.pageOnLoad(this);
     var a = util.formatData(new Date());
@@ -116,6 +128,8 @@ Page({
         image: "/images/icon-warning.png"
       });
       i.address_id = a.data.address.id;
+    i.address_name = a.data.name
+     i.address_mobile = a.data.mobile
     // } else {
       // if (i.address_name = a.data.name, i.address_mobile = a.data.mobile, !a.data.shop.id) return void wx.showModal({
       //   title: "警告",

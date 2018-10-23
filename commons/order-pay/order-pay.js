@@ -230,6 +230,10 @@ var api = require("../../api.js"), app = getApp(), pay = {
                                 }
                             }) : 2 == i.payment ? (o = "HUODAO_PAY", t()) : 3 == i.payment && (o = "BALANCE_PAY", 
                             t());
+                        }else{
+                          wx.showToast({
+                            title: e.msg,
+                          })
                         }
                         if (1 == e.code) return wx.hideLoading(), void _.page.showToast({
                             title: e.msg,

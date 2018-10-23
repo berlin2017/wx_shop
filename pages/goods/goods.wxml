@@ -280,7 +280,7 @@
                         <text>店铺</text>
                     </view>
                 </navigator>
-                <navigator class="flex-grow-0 flex-y-center bar-bottom-btn" openType="redirect" url="/pages/index/index" wx:else>
+                <navigator class="flex-grow-0 flex-y-center bar-bottom-btn" openType="switchTab" url="/pages/index/index" wx:else>
                     <view>
                         <image src="/images/icon-store.png"></image>
                         <text>首页</text>
