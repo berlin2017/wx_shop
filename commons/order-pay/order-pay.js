@@ -238,7 +238,7 @@ var api = require("../../api.js"), app = getApp(), pay = {
                         if (1 == e.code) return wx.hideLoading(), void _.page.showToast({
                             title: e.msg,
                             image: "/images/icon-warning.png"
-                        });
+                        }); 
                     }
                 });
             }

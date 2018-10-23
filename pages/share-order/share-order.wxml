@@ -16,7 +16,7 @@
 
   <view class="order-list">
   <view style='width:96%;margin-left:auto;margin-right:auto;height:40px;margin-top:120rpx;margin-bottom:10rpx;'>
-    <input placeholder='输入完整手机号码' bindconfirm='search' confirm-type='search' type='number' style='margin-left:auto;margin-right:auto;height:30px;border-radius:15px;background:white;padding-left:15px;padding-right:15px;float:left;width:80%;' bindinput='bindInput'></input>
+    <input placeholder='输入手机号码' bindconfirm='search' confirm-type='search' type='number' style='margin-left:auto;margin-right:auto;height:30px;border-radius:15px;background:white;padding-left:15px;padding-right:15px;float:left;width:80%;' bindinput='bindInput'></input>
     <view style='float:right;line-height:30px;width:10%;margin-left:5%;margin-right:5%;' bindtap='search'>搜索</view>
   </view>
   
