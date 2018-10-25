@@ -79,7 +79,7 @@
 
       </view>
       <view class="flex-grow-0 flex-row">
-        <view class="flex-grow-1 num">评论:{{order.words}}</view>
+        <view class="flex-grow-1 num" wx:if='{{order.words}}'>买家留言:{{order.words}}</view>
       </view>
     </view>
   </view>
